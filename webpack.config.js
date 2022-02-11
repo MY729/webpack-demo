@@ -1,9 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader/dist/index')
-
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
     mode: 'development',
     entry: path.resolve(__dirname, './src/main.js'),
@@ -30,12 +29,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './index.html'),
             filename: 'index.html',
             title: 'webpack5.0 + vue3.0'
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new BundleAnalyzerPlugin()
     ]
 }
